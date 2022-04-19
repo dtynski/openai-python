@@ -296,7 +296,8 @@ class APIRequestor:
                 stream=stream,
                 timeout=TIMEOUT_SECS,
             )
-        except requests.exceptions.RequestException as e:
+        except Exception as e:
+            print(e)
             raise error.APIConnectionError("Error communicating with OpenAI") from e
         util.log_info(
             "OpenAI API response",
